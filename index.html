@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Irma Díaz Internacional | Estética-Spa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,700;1,300&amp;family=Manrope:wght@200;400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#3f3f3f",
+                      "surface-variant": "#dde4e5",
+                      "secondary-dim": "#535353",
+                      "inverse-surface": "#0c0f0f",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-highest": "#dde4e5",
+                      "on-secondary": "#fbf8f8",
+                      "surface-tint": "#735c00",
+                      "on-primary-container": "#644f00",
+                      "primary-container": "#ffe088",
+                      "tertiary-container": "#fee9e8",
+                      "on-error-container": "#752121",
+                      "on-surface": "#2d3435",
+                      "primary-dim": "#655000",
+                      "tertiary-fixed-dim": "#efdbda",
+                      "inverse-primary": "#f5ce53",
+                      "error": "#9f403d",
+                      "on-surface-variant": "#5a6061",
+                      "tertiary-fixed": "#fee9e8",
+                      "on-secondary-fixed-variant": "#5c5b5b",
+                      "primary-fixed": "#ffe088",
+                      "surface-container-high": "#e4e9ea",
+                      "surface": "#f9f9f9",
+                      "on-tertiary": "#fff7f6",
+                      "on-primary-fixed": "#4e3d00",
+                      "outline-variant": "#adb3b4",
+                      "error-dim": "#4e0309",
+                      "secondary-fixed": "#e4e2e2",
+                      "surface-container": "#ebeeef",
+                      "inverse-on-surface": "#9c9d9d",
+                      "tertiary-dim": "#5e504f",
+                      "outline": "#757c7d",
+                      "primary-fixed-dim": "#f8d056",
+                      "on-error": "#fff7f6",
+                      "on-tertiary-container": "#645554",
+                      "primary": "#735c00",
+                      "secondary-container": "#e4e2e2",
+                      "error-container": "#fe8983",
+                      "on-background": "#2d3435",
+                      "on-tertiary-fixed": "#514343",
+                      "on-primary-fixed-variant": "#705900",
+                      "secondary": "#5f5f5f",
+                      "surface-dim": "#d4dbdd",
+                      "background": "#f9f9f9",
+                      "on-tertiary-fixed-variant": "#6e5f5e",
+                      "tertiary": "#6a5c5b",
+                      "on-primary": "#fff7ea",
+                      "secondary-fixed-dim": "#d6d4d4",
+                      "surface-bright": "#f9f9f9",
+                      "surface-container-low": "#f2f4f4",
+                      "on-secondary-container": "#525252"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Noto Serif"],
+                      "body": ["Manrope"],
+                      "label": ["Manrope"]
+              }
+            },
+          },
+        }
+    </script>
+<style>body {
+    font-family: "Manrope", sans-serif;
+    background-color: #f2f2f2;
+    background-image: url(https://lh3.googleusercontent.com/aida/ADBb0uigraALEfr_mnqIxSJDAuFIa7SG8yPycaY24jjXDncQvGRdNL_wyAa9CeP1kpZ8VDMDY0q3Ge2PMOg0SnEhktgc-deyQ5YZ6vKzJwLWY_OhOLpZeqaCP7CVEdPauiRepLQUUCaNI_GF5kqq-9QN_8_UBT0cb7GWdGQRBGGryIBjXRCucXMLE0p_BAi-lagCaRYEOlL59HNvhVnHTxclGFNopfQSUTckyxeS1KyRX_jKNPb0vl4Z7aPPvLzBqz5lve6jYx_qx9FSUvk);
+    background-blend-mode: luminosity;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #2d3435
+    }
+.font-serif {
+    font-family: "Noto Serif", serif
+    }
+.glass-header {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px)
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24
+    }
+.asymmetric-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr)
+    }
+.cloud-shadow {
+    box-shadow: 0 40px 60px -10px rgba(45, 52, 53, 0.05)
+    }
+.no-scrollbar::-webkit-scrollbar {
+    display: none
+    }
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none
+    }</style>
+</head>
+<body class="text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="bg-white/80 dark:bg-stone-900/80 backdrop-blur-md font-serif font-light tracking-widest uppercase docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-12 py-6 max-w-screen-2xl mx-auto">
+<a class="text-2xl font-serif italic text-stone-800 dark:text-stone-100" href="#">Irma Díaz Internacional</a>
+<nav class="hidden md:flex items-center space-x-12">
+<a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200 transition-colors duration-500" href="#services">Services</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200 transition-colors duration-500" href="#promotions">Gallery</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200 transition-colors duration-500" href="#location">Location</a>
+<button class="bg-primary text-on-primary px-8 py-2 rounded-sm text-sm tracking-widest font-body font-semibold hover:opacity-70 transition-opacity duration-300">Book Now</button>
+</nav>
+<button class="md:hidden material-symbols-outlined text-primary">menu</button>
+</div>
+</header>
+<main>
+<!-- Hero Section: Editorial Impact -->
+<section class="relative h-[921px] flex items-center overflow-hidden bg-surface-dim/90">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60 mix-blend-multiply grayscale" data-alt="Elegant close-up portrait of a woman with radiant skin and soft lighting in a high-end spa environment with muted grey tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsY1zebCpw_n9Yl8QKyi2UUjfPmtWfhXwCv-ubOJzp5jXuOPyMHFYak43Hh_ozkBxpcoINqSpdK7CA1RxBVMRqD9GJAf7sDebtgyFstDcARzpwKSIr16GDUd9LhRt1y4XRtcZDXkCETJHvUZXbUKeYyRsM5oKu7o16VUpJopsc2EOzhOxHI-DFYq_UxYUw_ljGZPBVbOUG3pnpbcxNm9mro9fzzA4jNH_UxNTLBlg9i1an0iyeaGHwQ0T4mVLNvv453PUBOxyTffEu"/>
+</div>
+<div class="container mx-auto px-12 relative z-10 flex flex-col md:flex-row items-center md:items-end justify-between">
+<div class="max-w-2xl">
+<h2 class="text-primary text-sm uppercase tracking-[0.4em] mb-4 font-body font-bold">Estética &amp; Spa</h2>
+<h1 class="text-6xl md:text-8xl font-serif leading-tight mb-8 text-on-surface">
+                        Mi pasión <br/>
+<span class="italic text-primary-dim ml-12">tu belleza</span>
+</h1>
+<p class="text-lg text-on-surface-variant max-w-md leading-loose font-light">
+                        Descubre un refugio de serenidad y excelencia en Arequipa. Donde la técnica internacional se encuentra con el cuidado más personal.
+                    </p>
+</div>
+<div class="hidden md:block mb-12">
+<div class="border-l border-primary/30 pl-8 space-y-4">
+<span class="block text-xs tracking-widest uppercase text-outline">Since 2024</span>
+<span class="block text-xl font-serif">Yanahuara, Arequipa</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Promotions: Bento Grid Layout -->
+<section class="py-32 px-12" id="promotions">
+<div class="max-w-screen-2xl mx-auto">
+<div class="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div>
+<h2 class="font-serif text-5xl mb-4">Promociones Ofertas</h2>
+<p class="text-primary font-body tracking-[0.2em] uppercase text-xs">Exquisite Curated Packages</p>
+</div>
+<div class="h-[1px] flex-grow bg-outline-variant/20 mx-12 hidden md:block"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Colorimetría -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-white cloud-shadow p-8 flex flex-col justify-between min-h-[400px]">
+<div class="relative z-10">
+<h3 class="text-3xl font-serif mb-2">Colorimetría</h3>
+<p class="text-on-surface-variant font-light mb-6">Tratamiento Post-Color + Color Entero + Corte</p>
+<span class="text-4xl font-body font-extrabold text-primary">S/ 80.00</span>
+</div>
+<img class="absolute right-0 bottom-0 w-1/2 h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-700" data-alt="Professional hair stylist applying color to a woman's hair in a modern minimalist salon setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgxAQSsjXref6tpkkKwy99Rhng1LabCa81ZUOEfDwQwu-dCpuXhKPkITlBky_XQu9gUG_x41piBtdjXv9mD98_cxd5JP8PZQ6Z2f4YzecVWm4IiABok7uHReTlbEjevYlQzXWKiPvH01DkaW4exVZSGhXFIHn3Msmv9F5aLgF9vpMpzUP9oNAU-zzK0WYn-8b81uBLUqjK8nd6ufoemDCaq8SaZ_pbkKDnQQFVsOTJVIORqQQgT0DtjZa8hRuufPsyokVr2fRbj9cc"/>
+</div>
+<!-- Hidratación -->
+<div class="md:col-span-4 bg-white rounded-xl p-8 flex flex-col justify-center border border-outline-variant/10 shadow-sm">
+<h3 class="text-2xl font-serif mb-2">Hidratación</h3>
+<ul class="text-sm text-on-surface-variant space-y-2 mb-8 font-light">
+<li>• Facial Profundo</li>
+<li>• Mascarilla</li>
+<li>• Aclaramiento</li>
+</ul>
+<div class="text-3xl font-body font-bold text-primary">S/ 50.00</div>
+</div>
+<!-- Balayage -->
+<div class="md:col-span-4 bg-white rounded-xl p-8 flex flex-col justify-end min-h-[350px] shadow-sm border border-outline-variant/5">
+<h3 class="text-2xl font-serif mb-2">Balayage</h3>
+<p class="text-xs uppercase tracking-widest text-on-surface-variant mb-6 italic">Mechas + Corte + Lavado + Cepillado</p>
+<div class="text-3xl font-body font-bold text-primary">S/ 150.00</div>
+</div>
+<!-- Facial Express -->
+<div class="md:col-span-4 bg-white rounded-xl p-8 flex items-center justify-between shadow-sm border border-outline-variant/5">
+<div>
+<h3 class="text-xl font-serif mb-1">Facial Express</h3>
+<p class="text-xs text-on-surface-variant">+ Manicure Básico</p>
+</div>
+<div class="text-2xl font-body font-bold text-primary">S/ 30.00</div>
+</div>
+<!-- Dorada -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-xl bg-white p-8 min-h-[350px] shadow-sm border border-outline-variant/5">
+<h3 class="text-3xl font-serif mb-4 relative z-10 text-on-surface">Dorada</h3>
+<p class="text-sm text-on-surface-variant mb-12 relative z-10">Mechas Dorado / Balayage + Corte + Lavado + Cepillado</p>
+<div class="text-4xl font-body font-bold text-primary relative z-10">S/ 130.00</div>
+</div>
+<!-- More Small Cards -->
+<div class="md:col-span-6 bg-white border border-outline-variant/20 rounded-xl p-8 flex justify-between items-center shadow-sm">
+<div>
+<h3 class="text-2xl font-serif">Ombre</h3>
+<p class="text-sm text-on-surface-variant">Mechas + Corte + Lavado</p>
+</div>
+<div class="text-3xl font-body font-bold text-primary">S/ 120.00</div>
+</div>
+<div class="md:col-span-6 bg-white border border-outline-variant/20 rounded-xl p-8 flex justify-between items-center shadow-sm">
+<div>
+<h3 class="text-2xl font-serif">Laceado Brasilero</h3>
+<p class="text-sm text-on-surface-variant">Incluye Corte</p>
+</div>
+<div class="text-3xl font-body font-bold text-primary">S/ 100.00</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section: Minimalist Lists -->
+<section class="py-32 bg-white/40 backdrop-blur-sm" id="services">
+<div class="max-w-screen-2xl mx-auto px-12">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-24">
+<!-- Tratamientos Faciales -->
+<div>
+<div class="mb-12">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">face</span>
+<h2 class="text-3xl font-serif border-b border-primary/20 pb-4">Tratamientos Faciales</h2>
+</div>
+<ul class="space-y-6 text-on-surface-variant">
+<li class="flex justify-between items-end border-b border-outline-variant/10 pb-2">
+<span>Limpieza Profunda</span>
+<span class="text-xs uppercase tracking-tighter">Premium</span>
+</li>
+<li class="flex justify-between items-end border-b border-outline-variant/10 pb-2">
+<span>Hidratación Facial</span>
+<span class="text-xs uppercase tracking-tighter">Vitality</span>
+</li>
+<li class="flex justify-between items-end border-b border-outline-variant/10 pb-2">
+<span>Peeling Rejuvenecedor</span>
+<span class="text-xs uppercase tracking-tighter">Advanced</span>
+</li>
+<li class="flex justify-between items-end border-b border-outline-variant/10 pb-2">
+<span>Mascarillas LED</span>
+<span class="text-xs uppercase tracking-tighter">Tech</span>
+</li>
+</ul>
+</div>
+<!-- Salón -->
+<div>
+<div class="mb-12">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">content_cut</span>
+<h2 class="text-3xl font-serif border-b border-primary/20 pb-4">Salón de Belleza</h2>
+</div>
+<div class="grid grid-cols-1 gap-4 text-on-surface-variant">
+<div class="bg-white p-4 rounded-sm shadow-sm">
+<h4 class="font-bold text-xs uppercase tracking-widest text-primary mb-2">Cortes & Estilo</h4>
+<p class="text-sm">Damas, Niños, Barber Shop</p>
+</div>
+<div class="bg-white p-4 rounded-sm shadow-sm">
+<h4 class="font-bold text-xs uppercase tracking-widest text-primary mb-2">Especialidades</h4>
+<p class="text-sm">Novias, Alisado Brasilero, Botox Capilar</p>
+</div>
+<div class="bg-white p-4 rounded-sm shadow-sm">
+<h4 class="font-bold text-xs uppercase tracking-widest text-primary mb-2">Color & Arte</h4>
+<p class="text-sm">Balayage, Mechas, Maquillaje Profesional</p>
+</div>
+</div>
+</div>
+<!-- Tratamientos Corporales -->
+<div>
+<div class="mb-12">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">spa</span>
+<h2 class="text-3xl font-serif border-b border-primary/20 pb-4">Corporales</h2>
+</div>
+<ul class="space-y-6 text-on-surface-variant">
+<li class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-primary/40"></div>
+<span>Masajes Reductores</span>
+</li>
+<li class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-primary/40"></div>
+<span>Masajes Relax</span>
+</li>
+<li class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-primary/40"></div>
+<span>Drenaje Linfático</span>
+</li>
+<li class="flex items-center gap-4">
+<div class="w-2 h-2 rounded-full bg-primary/40"></div>
+<span>Exfoliación Corporal</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Atmosphere Gallery: Atelier Carousel -->
+<section class="py-32 overflow-hidden">
+<div class="max-w-screen-2xl mx-auto px-12 mb-16">
+<h2 class="font-serif text-4xl italic">Nuestra Atmósfera</h2>
+</div>
+<div class="flex gap-8 overflow-x-auto pb-12 px-12 no-scrollbar">
+<div class="flex-none w-[400px] h-[500px] relative rounded-xl overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]" data-alt="Interior of a luxury minimalist spa with stone textures, soft indirect lighting and clean architectural lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPNPz2mynY4PP38Iyy2UzWfmsSvpjm-tSGxb4JjPmQBxMOS4Xnuge3SEhMQFYoj0CQbc7Klge-97GZ8wV7pwVHgqceg-73h2GPJouVj2cN-dxmbU-KEaKtRiQSKX0LKiE7Gx3KHUXkDWQL-MejMRtTNdCDbT6ZZoxFcBMgVVISyoYRTO30yO1OxI_qAYTkfBXmohDbxtYDbn_pjjLTfs7INFzPhyneKMwnxHw_AYobzfRdojNNJ9Qwfcm8HqYTw1159djGLxxXzrXE"/>
+<div class="absolute bottom-6 left-6 text-white z-10">
+<span class="font-serif text-2xl">Relajación</span>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</div>
+<div class="flex-none w-[600px] h-[500px] relative rounded-xl overflow-hidden group mt-12">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]" data-alt="Modern hair salon workstation with minimalist mirrors and warm atmospheric lighting reflecting on grey textured walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf-oDIqeEK8KN4YOx0YXG1yMW1tJ4Dl5JZnlJa_VTsOj9nJryXbTtHER_cZejRjZs8xijOhRxXfXmXJ2SKDIRpY1378DIRLTXoiWcBmD46jbPxGCXDe581uafdBSSRLkrAdpmS-KgDlh2bKCzdOFawpOKPugMK8YwPEPQ0ARCl19Wt0epPLPVXFGIhUjsT6o7UsHJ4f9QGivboeswt8cgj7i8OfCFaEwawq25sGkuLKBGCw7CAIY4ZIRzNhDDntaBR7IPLGHuVLwRI"/>
+<div class="absolute top-6 right-6 text-white z-10 text-right">
+<span class="font-serif text-2xl">Excelencia</span>
+</div>
+<div class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-black/20"></div>
+</div>
+<div class="flex-none w-[350px] h-[400px] relative rounded-xl overflow-hidden group self-center">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]" data-alt="Close-up of premium spa products and textures like smooth stones and essential oils in a serene setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7XwqA7Tr9ieomm-mUkRNZQOb3t83fhEAs2Cthd4WgEs5hjP_G2dXxjBSTYGPFk-YYrImA5ZOZfRyugcdhZm4vIcP5VXVB2o0Umc1nK9YtAyJizMFNhmmHLU2vvOXguMDJBQwni2Wm5TNTGjF-nYQzjcCr8r4f-t7MHAzBlQ41hRuWbDRX-LUQhOSTkGgOI5pxaMFnXMV6WHuiKQ0aRJA_8ggV3DpeUK_5ZSwsDTtwrFyMVWAXTUoBevOg18aAvmFn--kbf0EBigj_"/>
+</div>
+</div>
+</section>
+<!-- Location & Contact -->
+<section class="py-32 bg-surface-dim/80 backdrop-blur-sm" id="location">
+<div class="max-w-screen-2xl mx-auto px-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+<div>
+<h2 class="font-serif text-5xl mb-8">Encuéntranos</h2>
+<div class="space-y-12">
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+<div>
+<h4 class="font-bold uppercase tracking-widest text-xs mb-2">Ubicación Principal</h4>
+<p class="text-xl font-serif">CL. Antiquilla 355<br/>Yanahuara, Arequipa</p>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-primary text-3xl">call</span>
+<div>
+<h4 class="font-bold uppercase tracking-widest text-xs mb-2">Contacto Directo</h4>
+<p class="text-xl font-serif">958 180 621</p>
+</div>
+</div>
+</div>
+</div>
+<div class="aspect-square rounded-2xl overflow-hidden grayscale opacity-80 border border-outline-variant/20 shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="Stylized map view of the Yanahuara district in Arequipa showing architectural patterns and streets in a minimalist aesthetic" data-location="Yanahuara, Arequipa" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN2n8JZkZFnYG83ZMWJylIbS4AQBSGHF4ph4NLVeTkMWevToMEb5DCoXhhut0LpuW8SJPz-62Jhf29veMJrP4Eeb_HuH5QIfWatQmIYvF3ezsbqzcOSs9sgrHDW-Scz7TLOiy1HRG2r_GdeAqivF04t0RZ1lCgoOzaGKQLI2GuuKTBC3tFiVFiCZdspkTBUPmv7VcRXDTWj79Fovhq0JCX1BqaMAIGH04oi7stJEH5h1TgVjvVA0hsVKNxa6CqTUJmneU8xQXrGS-n"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-stone-100/90 dark:bg-stone-950/90 backdrop-blur-md full-width py-16 px-12 mt-32">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-screen-2xl mx-auto">
+<div>
+<span class="text-lg font-serif text-stone-800 dark:text-stone-200 block mb-6 italic">Irma Díaz Internacional</span>
+<p class="font-sans text-sm tracking-wide leading-relaxed text-stone-500 dark:text-stone-400">
+                    Especialistas en belleza y bienestar con visión internacional en el corazón de Yanahuara.
+                </p>
+</div>
+<div class="flex flex-col space-y-3">
+<h4 class="font-body font-bold text-xs uppercase tracking-[0.2em] mb-4 text-primary">Links Rápidos</h4>
+<a class="text-stone-500 dark:text-stone-400 hover:text-yellow-700 dark:hover:text-yellow-500 transition-colors duration-300 text-sm" href="#">WhatsApp: 958 180 621</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-yellow-700 dark:hover:text-yellow-500 transition-colors duration-300 text-sm" href="#">Email: diaz.irma@gmail.com</a>
+</div>
+<div class="flex flex-col space-y-3">
+<h4 class="font-body font-bold text-xs uppercase tracking-[0.2em] mb-4 text-primary">Social</h4>
+<a class="text-stone-500 dark:text-stone-400 hover:text-yellow-700 dark:hover:text-yellow-500 transition-colors duration-300 text-sm" href="#">Facebook</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-yellow-700 dark:hover:text-yellow-500 transition-colors duration-300 text-sm" href="#">Instagram</a>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto mt-16 pt-8 border-t border-stone-200/50">
+<p class="font-sans text-sm tracking-wide leading-relaxed text-stone-400 text-center">© 2024 Irma Díaz Internacional. CL. Antiquilla 355 - Yanahuara.</p>
+</div>
+</footer>
+<!-- Side Floating CTA -->
+<a class="fixed bottom-8 right-8 z-50 flex items-center justify-center h-14 w-14 rounded-full bg-stone-900 dark:bg-stone-100 shadow-2xl shadow-stone-400/20 hover:scale-110 transition-transform duration-300 active:scale-95 group" href="https://wa.me/51958180621">
+<span class="material-symbols-outlined text-white dark:text-stone-900" data-icon="chat" data-weight="fill" style="font-variation-settings: 'FILL' 1;">chat</span>
+<span class="absolute right-full mr-4 bg-stone-900 text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">WhatsApp Support</span>
+</a>
+</body></html>
