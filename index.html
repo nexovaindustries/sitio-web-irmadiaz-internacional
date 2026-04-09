@@ -13,12 +13,12 @@
           theme: {
             extend: {
               "colors": {
-                      "primary": "#775a19",
-                      "primary-container": "#ffdea5",
-                      "secondary": "#5d5f63",
-                      "background": "#f9f9f9",
-                      "surface": "#f9f9f9",
-                      "on-surface": "#2d3435"
+                      "primary": "#000000",
+                      "primary-container": "#9d7c35",
+                      "secondary": "#333333",
+                      "background": "#ffffff",
+                      "surface": "#ffffff",
+                      "on-surface": "#000000"
               },
               "fontFamily": {
                       "headline": ["Noto Serif"],
@@ -31,12 +31,12 @@
     </script>
 <style>
         .topographic-bg {
-            background-color: #fcfcfc;
-            background-image: url('assets/topography.png');
+            background-color: transparent;
+            background-image: url('assets/topography_black.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            background-blend-mode: multiply;
+            /* Using no blend mode to keep high contrast black lines */
         }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
@@ -45,8 +45,9 @@
             line-height: 1.1;
         }
         .glass-nav {
-            backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.4);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         .reveal {
             opacity: 0;
@@ -68,41 +69,43 @@
         }
     </style>
 </head>
-<body class="topographic-bg font-body text-on-surface overflow-x-hidden">
+<!-- Changed font color to be strictly black -->
+<body class="topographic-bg font-body text-black overflow-x-hidden">
+
 <!-- TopNavBar -->
-<header class="docked full-width top-0 sticky z-50 glass-nav shadow-sm shadow-[#2d3435]/5">
+<header class="docked full-width top-0 sticky z-50 glass-nav shadow-sm">
 <nav class="flex justify-between items-center w-full px-8 py-6 max-w-full">
-<div class="font-['Noto_Serif'] text-2xl font-light italic text-[#775a19]">
+<div class="font-['Noto_Serif'] text-2xl font-light italic text-black">
                 Irma Díaz Internacional
             </div>
 <div class="hidden md:flex gap-10 items-center">
-<a class="font-['Noto_Serif'] text-sm tracking-[0.05em] uppercase text-[#2d3435] hover:text-[#775a19] transition-colors duration-300" href="#servicios">Servicios</a>
-<a class="font-['Noto_Serif'] text-sm tracking-[0.05em] uppercase text-[#2d3435] hover:text-[#775a19] transition-colors duration-300" href="#galeria">Galería</a>
-<a class="font-['Noto_Serif'] text-sm tracking-[0.05em] uppercase text-[#2d3435] hover:text-[#775a19] transition-colors duration-300" href="#ubicacion">Ubicación</a>
-<button class="border border-primary bg-white px-6 py-2 font-['Noto_Serif'] text-sm tracking-[0.05em] uppercase text-primary hover:bg-primary-container transition-colors duration-300">
+<a class="font-['Noto_Serif'] text-sm tracking-[0.05em] uppercase text-black hover:text-gray-500 transition-colors duration-300" href="#servicios">Servicios</a>
+<a class="font-['Noto_Serif'] text-sm tracking-[0.05em] uppercase text-black hover:text-gray-500 transition-colors duration-300" href="#galeria">Galería</a>
+<a class="font-['Noto_Serif'] text-sm tracking-[0.05em] uppercase text-black hover:text-gray-500 transition-colors duration-300" href="#ubicacion">Ubicación</a>
+<button class="border border-black bg-transparent px-6 py-2 font-['Noto_Serif'] text-sm tracking-[0.05em] uppercase text-black hover:bg-black hover:text-white transition-all duration-300">
                     Reserva Ahora
                 </button>
 </div>
-<button class="md:hidden text-primary">
+<button class="md:hidden text-black">
 <span class="material-symbols-outlined">menu</span>
 </button>
 </nav>
-<div class="h-px w-full bg-gradient-to-b from-[#f2f4f4] to-transparent"></div>
 </header>
 <main>
 <!-- Hero Section -->
 <section class="relative min-h-[921px] flex items-center px-8 py-20 overflow-hidden">
 <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
-<div class="z-10 reveal">
-<h1 class="editorial-title font-headline text-5xl md:text-7xl font-light mb-8">
+<!-- Made background transparent -->
+<div class="z-10 reveal bg-white/20 backdrop-blur-md p-8 rounded border border-black/10">
+<h1 class="editorial-title font-headline text-5xl md:text-7xl font-bold mb-8 text-black">
                         Resalta el arte de <br/>
-<span class="text-primary italic font-light">Mi pasión, tu belleza</span>
+<span class="italic font-light">Mi pasión, tu belleza</span>
 </h1>
-<p class="text-secondary max-w-md text-lg font-light leading-relaxed mb-10">
+<p class="font-semibold max-w-md text-lg leading-relaxed mb-10 text-black">
                         Un santuario de bienestar diseñado para elevar tu esencia a través de la excelencia técnica y el cuidado personalizado.
                     </p>
 <div class="flex gap-4">
-<button class="bg-primary text-white border border-primary px-8 py-4 text-sm tracking-widest uppercase hover:opacity-90 transition-opacity">
+<button class="bg-black text-white px-8 py-4 text-sm tracking-widest uppercase hover:opacity-90 transition-opacity">
                             Explorar Menú
                         </button>
 </div>
@@ -114,104 +117,106 @@
 </div>
 </div>
 </section>
+
 <!-- Promociones / Featured Services Grid -->
 <section class="py-24 px-8" id="servicios">
 <div class="container mx-auto">
 <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4 reveal">
-<div class="max-w-2xl">
-<h2 class="font-headline text-3xl md:text-5xl font-light mb-4 text-on-surface">Experiencias <span class="italic text-primary">Exclusivas</span></h2>
-<p class="text-secondary font-light">Tratamientos diseñados con los más altos estándares internacionales.</p>
+<div class="max-w-2xl bg-white/30 backdrop-blur-[4px] p-6 rounded border border-black/10">
+<h2 class="font-headline text-3xl md:text-5xl font-bold mb-4 text-black">Experiencias <span class="italic font-light">Exclusivas</span></h2>
+<p class="font-semibold text-black">Tratamientos diseñados con los más altos estándares internacionales.</p>
 </div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <!-- Promo Card 1 -->
-<div class="bg-white/90 backdrop-blur-md p-8 shadow-sm group hover:shadow-xl transition-all duration-500 reveal">
+<div class="bg-white/20 backdrop-blur-md p-8 shadow-lg border border-black/10 group hover:shadow-2xl transition-all duration-500 reveal">
 <div class="aspect-square mb-8 overflow-hidden bg-gray-100">
 <img alt="Colorimetría" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKqnRy_2MVKTYgY0Yx5m33-O4Cv6rXrajoFMQuvG-PmOnUpqb2XCddz7ERlZSrSPRML8z2gLNNUAV3OFOZcEZMmjiwSHXbEKYpLj9omBo2EjooE-bjFJ_5VsZP28miB6Ggq7BqrIxA3d9tQHv0irImdLBSBFhMi7__01-dpJsWTBPEhQZAAYcIer1XneRb6N4nlZ2eAH2aRHbFeVGlhUEivAMBFvXxAdeoqJG2KxN3jk5QtWjyLwnvYygDsw-NFTPp2HwEga7A5K_l"/>
 </div>
-<span class="text-primary font-label text-xs tracking-widest uppercase mb-2 block">Cabello</span>
-<h3 class="font-headline text-2xl font-light mb-4 text-on-surface">Colorimetría &amp; Balayage</h3>
-<p class="text-secondary font-light text-sm mb-6 leading-relaxed">Técnicas avanzadas para iluminar tu rostro con degradados naturales y personalizados.</p>
-<div class="flex justify-between items-center border-t border-gray-200 pt-6">
-<span class="font-label text-primary font-semibold">Desde S/ 180</span>
-<span class="material-symbols-outlined text-primary">arrow_forward</span>
+<span class="text-black font-bold font-label text-xs tracking-widest uppercase mb-2 block">Cabello</span>
+<h3 class="font-headline text-2xl font-bold mb-4 text-black">Colorimetría &amp; Balayage</h3>
+<p class="font-semibold text-sm mb-6 leading-relaxed text-black">Técnicas avanzadas para iluminar tu rostro con degradados naturales y personalizados.</p>
+<div class="flex justify-between items-center border-t border-black/20 pt-6">
+<span class="font-label text-black font-bold">Desde S/ 180</span>
+<span class="material-symbols-outlined text-black">arrow_forward</span>
 </div>
 </div>
 <!-- Promo Card 2 -->
-<div class="bg-white/90 backdrop-blur-md p-8 shadow-sm group hover:shadow-xl transition-all duration-500 reveal" style="transition-delay: 100ms;">
+<div class="bg-white/20 backdrop-blur-md p-8 shadow-lg border border-black/10 group hover:shadow-2xl transition-all duration-500 reveal" style="transition-delay: 100ms;">
 <div class="aspect-square mb-8 overflow-hidden bg-gray-100">
 <img alt="Hidratación Facial" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwX2pZfJS88-nNw9GWHU31MXjHJnsEINpnqJd2zRIll1Fa_rC_HAQhPnx-bfsTv0aqeEjFPMs2uF6TvZL6UQbwltQF5cwiviG_i8PEx368nI_Qw7Pv5WqWEqGe6nsY4jYbkvF-IZGb6qcDuKz8uvIRzFD5U9TFHRMa685jldlZRzREvQcYdTKl8wqOoudaahH9WxFPsNILLEjqnbKCDSyzUdCFfxPj4dNldL8SWPxSpVXVtNbxZpBDTvlMeQ_Y2YoqhyrwQsVDOR8a"/>
 </div>
-<span class="text-primary font-label text-xs tracking-widest uppercase mb-2 block">Facial</span>
-<h3 class="font-headline text-2xl font-light mb-4 text-on-surface">Hidratación Profunda</h3>
-<p class="text-secondary font-light text-sm mb-6 leading-relaxed">Restaura la vitalidad de tu piel con activos botánicos y tecnología de punta.</p>
-<div class="flex justify-between items-center border-t border-gray-200 pt-6">
-<span class="font-label text-primary font-semibold">Desde S/ 120</span>
-<span class="material-symbols-outlined text-primary">arrow_forward</span>
+<span class="text-black font-bold font-label text-xs tracking-widest uppercase mb-2 block">Facial</span>
+<h3 class="font-headline text-2xl font-bold mb-4 text-black">Hidratación Profunda</h3>
+<p class="font-semibold text-sm mb-6 leading-relaxed text-black">Restaura la vitalidad de tu piel con activos botánicos y tecnología de punta.</p>
+<div class="flex justify-between items-center border-t border-black/20 pt-6">
+<span class="font-label text-black font-bold">Desde S/ 120</span>
+<span class="material-symbols-outlined text-black">arrow_forward</span>
 </div>
 </div>
 <!-- Promo Card 3 -->
-<div class="bg-white/90 backdrop-blur-md p-8 shadow-sm group hover:shadow-xl transition-all duration-500 reveal" style="transition-delay: 200ms;">
+<div class="bg-white/20 backdrop-blur-md p-8 shadow-lg border border-black/10 group hover:shadow-2xl transition-all duration-500 reveal" style="transition-delay: 200ms;">
 <div class="aspect-square mb-8 overflow-hidden bg-gray-100">
 <img alt="Manicura de Lujo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0nvEf-3o0Rj6YN-01SPrxFM8i1ELBVbFfYMmJDblzBJhvAg3kaGAA8q1FrLJcc6PIEzgisZ1Co3wze93dzko8rdzJgx9PnRrV1uoIYpVkuZ12ZRX0IsKNf1I5ONJJcUX12H6fJnJ2SyegdToQ1H7NaJqUyKdtJw3Eafau31XZU2nOdkd5WOktR9mlYyy-dxwblCqnFoh3zgRfRemQa4HEX_YnkGUdNiBknV7OGeCWqle_fpimYRGhIcXqcbi2ZNZoWo3sqf8x_ZHN"/>
 </div>
-<span class="text-primary font-label text-xs tracking-widest uppercase mb-2 block">Nails</span>
-<h3 class="font-headline text-2xl font-light mb-4 text-on-surface">Manicura de Lujo</h3>
-<p class="text-secondary font-light text-sm mb-6 leading-relaxed">Cuidado integral de manos con esmaltado premium y ritual de exfoliación.</p>
-<div class="flex justify-between items-center border-t border-gray-200 pt-6">
-<span class="font-label text-primary font-semibold">Desde S/ 85</span>
-<span class="material-symbols-outlined text-primary">arrow_forward</span>
+<span class="text-black font-bold font-label text-xs tracking-widest uppercase mb-2 block">Nails</span>
+<h3 class="font-headline text-2xl font-bold mb-4 text-black">Manicura de Lujo</h3>
+<p class="font-semibold text-sm mb-6 leading-relaxed text-black">Cuidado integral de manos con esmaltado premium y ritual de exfoliación.</p>
+<div class="flex justify-between items-center border-t border-black/20 pt-6">
+<span class="font-label text-black font-bold">Desde S/ 85</span>
+<span class="material-symbols-outlined text-black">arrow_forward</span>
 </div>
 </div>
 </div>
 </div>
 </section>
+
 <!-- Service Menu -->
-<section class="bg-white/70 backdrop-blur-sm py-24 px-8" id="galeria">
+<section class="py-24 px-8" id="galeria">
 <div class="container mx-auto">
 <div class="grid md:grid-cols-2 gap-20">
-<div class="reveal">
-<h3 class="font-headline text-sm tracking-widest uppercase text-primary mb-12">Nuestra Carta</h3>
+<div class="reveal bg-white/20 backdrop-blur-md p-8 rounded border border-black/10">
+<h3 class="font-headline text-sm tracking-widest uppercase text-black font-bold mb-12">Nuestra Carta</h3>
 <div class="space-y-16">
 <div class="space-y-6">
-<h4 class="font-headline text-3xl font-light italic mb-8 text-on-surface">Salón &amp; Estética</h4>
-<div class="flex justify-between items-baseline border-b border-gray-200 pb-2">
-<span class="text-lg font-light text-on-surface">Corte de Diseño Internacional</span>
-<span class="text-primary font-semibold tracking-widest text-sm">S/ 65</span>
+<h4 class="font-headline text-3xl font-bold italic mb-8 text-black">Salón &amp; Estética</h4>
+<div class="flex justify-between items-baseline border-b border-black/20 pb-2">
+<span class="text-lg font-bold text-black">Corte de Diseño Internacional</span>
+<span class="text-black font-bold tracking-widest text-sm">S/ 65</span>
 </div>
-<div class="flex justify-between items-baseline border-b border-gray-200 pb-2">
-<span class="text-lg font-light text-on-surface">Peinado Social / Gala</span>
-<span class="text-primary font-semibold tracking-widest text-sm">S/ 90</span>
+<div class="flex justify-between items-baseline border-b border-black/20 pb-2">
+<span class="text-lg font-bold text-black">Peinado Social / Gala</span>
+<span class="text-black font-bold tracking-widest text-sm">S/ 90</span>
 </div>
-<div class="flex justify-between items-baseline border-b border-gray-200 pb-2">
-<span class="text-lg font-light text-on-surface">Tratamiento Capilar Keratina</span>
-<span class="text-primary font-semibold tracking-widest text-sm">S/ 250</span>
+<div class="flex justify-between items-baseline border-b border-black/20 pb-2">
+<span class="text-lg font-bold text-black">Tratamiento Capilar Keratina</span>
+<span class="text-black font-bold tracking-widest text-sm">S/ 250</span>
 </div>
 </div>
 <div class="space-y-6">
-<h4 class="font-headline text-3xl font-light italic mb-8 text-on-surface">Corporales</h4>
-<div class="flex justify-between items-baseline border-b border-gray-200 pb-2">
-<span class="text-lg font-light text-on-surface">Masaje Relajante Piedras Calientes</span>
-<span class="text-primary font-semibold tracking-widest text-sm">S/ 140</span>
+<h4 class="font-headline text-3xl font-bold italic mb-8 text-black">Corporales</h4>
+<div class="flex justify-between items-baseline border-b border-black/20 pb-2">
+<span class="text-lg font-bold text-black">Masaje Relajante Piedras Calientes</span>
+<span class="text-black font-bold tracking-widest text-sm">S/ 140</span>
 </div>
-<div class="flex justify-between items-baseline border-b border-gray-200 pb-2">
-<span class="text-lg font-light text-on-surface">Exfoliación Corporal Orgánica</span>
-<span class="text-primary font-semibold tracking-widest text-sm">S/ 110</span>
+<div class="flex justify-between items-baseline border-b border-black/20 pb-2">
+<span class="text-lg font-bold text-black">Exfoliación Corporal Orgánica</span>
+<span class="text-black font-bold tracking-widest text-sm">S/ 110</span>
 </div>
-<div class="flex justify-between items-baseline border-b border-gray-200 pb-2">
-<span class="text-lg font-light text-on-surface">Drenaje Linfático Manual</span>
-<span class="text-primary font-semibold tracking-widest text-sm">S/ 160</span>
+<div class="flex justify-between items-baseline border-b border-black/20 pb-2">
+<span class="text-lg font-bold text-black">Drenaje Linfático Manual</span>
+<span class="text-black font-bold tracking-widest text-sm">S/ 160</span>
 </div>
 </div>
 </div>
 </div>
 <div class="hidden md:block reveal-scale">
 <div class="sticky top-32">
-<div class="aspect-[3/4] overflow-hidden relative shadow-xl">
+<div class="aspect-[3/4] overflow-hidden relative shadow-xl border-4 border-black">
 <img alt="Atmósfera Spa" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDormNg4Qgy-xauPt1RYf-YuDO5ZV27A8tuf-IIPDWpFk8eypXlSY3MQihodkDPknmKDsTAG7OJa5tpOeMYRHJLLD452q9JH6XnlomSXaORJLoCrwnnB35PFXjiM0r4P7Zn4wi-tW7bybfczJkesZhsOmDwnFLUEqURvhk0D0lJP_KPo5JxM4gmJjItc9VceSA_kVC_nm0kqUg2Xt408r6UIerfk5c591j_1aVY3jdIgQyISJdGCYK6z00TvQa4nLHN-l1aR7o96Rk7"/>
 </div>
-<div class="mt-8 p-8 border border-primary/20 bg-white/90 shadow-sm relative -ml-10">
-<p class="font-headline italic text-xl text-primary leading-relaxed">
+<div class="mt-8 p-8 border border-black bg-white/40 backdrop-blur-md shadow-sm relative -ml-10">
+<p class="font-headline italic text-xl font-bold text-black leading-relaxed">
                                     "Cada detalle en Irma Díaz ha sido pensado para que tu visita sea un viaje de desconexión y renovación."
                                 </p>
 </div>
@@ -220,34 +225,35 @@
 </div>
 </div>
 </section>
+
 <!-- Location Section -->
 <section class="py-24 px-8" id="ubicacion">
 <div class="container mx-auto reveal">
-<div class="grid md:grid-cols-2 gap-0 shadow-2xl overflow-hidden bg-white/95">
+<div class="grid md:grid-cols-2 gap-0 shadow-2xl overflow-hidden bg-white/20 backdrop-blur-md border border-black/10">
 <div class="p-12 md:p-20 flex flex-col justify-center">
-<h2 class="font-headline text-4xl font-light mb-8 text-on-surface">Visítanos en <span class="text-primary font-semibold">Yanahuara</span></h2>
+<h2 class="font-headline text-4xl font-bold mb-8 text-black">Visítanos en <span class="bg-black text-white px-2 rounded">Yanahuara</span></h2>
 <div class="space-y-8 mb-12">
 <div class="flex gap-6 items-start">
-<span class="material-symbols-outlined text-primary mt-1">location_on</span>
+<span class="material-symbols-outlined text-black mt-1">location_on</span>
 <div>
-<p class="font-semibold text-on-surface">Dirección</p>
-<p class="text-secondary font-light">Calle Antiquilla 355, Yanahuara, Arequipa</p>
+<p class="font-bold text-black">Dirección</p>
+<p class="font-semibold text-black">Calle Antiquilla 355, Yanahuara, Arequipa</p>
 </div>
 </div>
 <div class="flex gap-6 items-start">
-<span class="material-symbols-outlined text-primary mt-1">schedule</span>
+<span class="material-symbols-outlined text-black mt-1">schedule</span>
 <div>
-<p class="font-semibold text-on-surface">Horarios</p>
-<p class="text-secondary font-light">Lunes a Sábado: 9:00 AM – 8:00 PM</p>
-<p class="text-secondary font-light">Domingos: Previa Cita</p>
+<p class="font-bold text-black">Horarios</p>
+<p class="font-semibold text-black">Lunes a Sábado: 9:00 AM – 8:00 PM</p>
+<p class="font-semibold text-black">Domingos: Previa Cita</p>
 </div>
 </div>
 </div>
-<a class="inline-flex items-center justify-center border-2 border-primary px-8 py-4 text-sm tracking-widest uppercase text-primary hover:bg-primary hover:text-white transition-all duration-300" href="https://maps.app.goo.gl/3wA3R6R4nQ3bQ6k49" target="_blank">
+<a class="inline-flex items-center justify-center border-2 border-black bg-black text-white px-8 py-4 text-sm tracking-widest uppercase hover:bg-transparent hover:text-black transition-all duration-300" href="https://maps.app.goo.gl/3wA3R6R4nQ3bQ6k49" target="_blank">
                             Ruta en Google Maps
                         </a>
 </div>
-<div class="h-96 md:h-auto min-h-[450px] relative">
+<div class="h-96 md:h-auto min-h-[450px] relative border-l border-black/10">
 <iframe class="w-full h-full grayscale hover:grayscale-0 transition-all duration-700" src="https://maps.google.com/maps?q=Calle%20Antiquilla%20355,%20Yanahuara,%20Arequipa&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 </div>
 </div>
@@ -256,29 +262,26 @@
 </main>
 
 <!-- Floating WhatsApp Button -->
-<a class="fixed bottom-6 right-6 z-[9999] group" href="https://wa.me/51958180621" target="_blank" rel="noopener noreferrer">
-    <div class="absolute inset-0 bg-[#25D366] rounded-full animate-ping opacity-75"></div>
-    <div class="relative flex items-center justify-center h-16 w-16 rounded-full bg-[#25D366] shadow-xl hover:scale-110 transition-transform duration-300">
-        <svg class="text-white w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.115.55 4.183 1.597 6L0 24l6.155-1.583C7.94 23.447 9.948 24 12.031 24 18.677 24 24 18.614 24 11.968c0-6.645-5.385-12.03-12.031-12.03h.062zm6.208 17.65c-.279.791-1.611 1.488-2.222 1.554-.509.055-1.15.174-3.238-.686-2.518-1.036-4.14-3.627-4.262-3.793-.122-.167-1.02-1.36-1.02-2.61 0-1.25.642-1.859.878-2.1.205-.205.518-.283.79-.283.086 0 .167 0 .237.01.218 0 .432.091.564.442.179.474.605 1.493.659 1.602.055.111.092.242.019.387-.074.146-.111.237-.222.348-.111.111-.233.254-.334.334-.112.091-.237.193-.105.422.13.228.583.96.248 1.556.666-.027-.384 1.206-.605.626 1.402.13.218.254.218.348.019.467-.687.751-1.01.992-1.01s.443.086.605.474c.163.388.948 2.27 1.093 2.454.146.183.21.312.019.687z"/></svg>
-    </div>
+<a class="fixed bottom-6 right-6 z-[9999] bg-black text-[#25D366] p-4 rounded-full shadow-2xl hover:scale-110 hover:bg-gray-900 transition-all duration-300 border border-[#25D366]/30 flex items-center justify-center group" href="https://wa.me/51958180621" target="_blank" rel="noopener noreferrer">
+    <svg class="w-8 h-8 group-hover:drop-shadow-[0_0_8px_rgba(37,211,102,0.8)] transition-all" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.115.55 4.183 1.597 6L0 24l6.155-1.583C7.94 23.447 9.948 24 12.031 24 18.677 24 24 18.614 24 11.968c0-6.645-5.385-12.03-12.031-12.03h.062zm6.208 17.65c-.279.791-1.611 1.488-2.222 1.554-.509.055-1.15.174-3.238-.686-2.518-1.036-4.14-3.627-4.262-3.793-.122-.167-1.02-1.36-1.02-2.61 0-1.25.642-1.859.878-2.1.205-.205.518-.283.79-.283.086 0 .167 0 .237.01.218 0 .432.091.564.442.179.474.605 1.493.659 1.602.055.111.092.242.019.387-.074.146-.111.237-.222.348-.111.111-.233.254-.334.334-.112.091-.237.193-.105.422.13.228.583.96.248 1.556.666-.027-.384 1.206-.605.626 1.402.13.218.254.218.348.019.467-.687.751-1.01.992-1.01s.443.086.605.474c.163.388.948 2.27 1.093 2.454.146.183.21.312.019.687z"/></svg>
 </a>
 
 <!-- Footer -->
-<footer class="w-full py-12 bg-white/90 backdrop-blur-md">
-<div class="container mx-auto px-12 border-t border-gray-200 pt-12">
+<footer class="w-full py-12 bg-white/40 backdrop-blur-md">
+<div class="container mx-auto px-12 border-t border-black/20 pt-12">
 <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-<div class="font-['Noto_Serif'] text-lg text-[#775a19]">
+<div class="font-['Noto_Serif'] text-lg font-bold text-black">
                     Irma Díaz Internacional
                 </div>
 <div class="flex flex-wrap justify-center gap-8">
-<a class="font-['Manrope'] text-xs tracking-widest uppercase text-[#2d3435]/60 hover:text-[#775a19] transition-all" href="#">WhatsApp: 958 180 621</a>
-<a class="font-['Manrope'] text-xs tracking-widest uppercase text-[#2d3435]/60 hover:text-[#775a19] transition-all" href="#">Email: diaz.irma@gmail.com</a>
-<a class="font-['Manrope'] text-xs tracking-widest uppercase text-[#2d3435]/60 hover:text-[#775a19] transition-all" href="#">Instagram</a>
-<a class="font-['Manrope'] text-xs tracking-widest uppercase text-[#2d3435]/60 hover:text-[#775a19] transition-all" href="#">Facebook</a>
+<a class="font-['Manrope'] text-xs font-bold tracking-widest uppercase text-black hover:text-gray-600 transition-all" href="#">WhatsApp: 958 180 621</a>
+<a class="font-['Manrope'] text-xs font-bold tracking-widest uppercase text-black hover:text-gray-600 transition-all" href="#">Email: diaz.irma@gmail.com</a>
+<a class="font-['Manrope'] text-xs font-bold tracking-widest uppercase text-black hover:text-gray-600 transition-all" href="#">Instagram</a>
+<a class="font-['Manrope'] text-xs font-bold tracking-widest uppercase text-black hover:text-gray-600 transition-all" href="#">Facebook</a>
 </div>
 </div>
 <div class="mt-12 text-center md:text-left">
-<p class="font-['Manrope'] text-xs tracking-widest uppercase text-[#2d3435]/60">
+<p class="font-['Manrope'] text-xs font-bold tracking-widest uppercase text-black">
                     © 2024 Irma Díaz Internacional. Luxury Spa &amp; Beauty.
                 </p>
 </div>
