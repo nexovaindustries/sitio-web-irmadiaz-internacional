@@ -71,6 +71,54 @@
             transform: scale(1);
         }
 
+        /* ── Custom Cursor ── */
+        * { cursor: none !important; }
+        @media (hover: none) and (pointer: coarse) { * { cursor: auto !important; } }
+        .cursor-dot {
+            position: fixed;
+            width: 8px; height: 8px;
+            background: #000;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999999;
+            transform: translate(-50%, -50%);
+            transition: width .2s, height .2s, background .2s;
+        }
+        .cursor-dot.clicked { width: 14px; height: 14px; background: #9d7c35; }
+        .cursor-circle {
+            position: fixed;
+            width: 38px; height: 38px;
+            border: 1.5px solid #9d7c35;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 999998;
+            transform: translate(-50%, -50%);
+            transition: width .3s ease, height .3s ease, border-color .3s, opacity .3s, background .3s;
+            opacity: 0.8;
+        }
+        .cursor-circle.hover {
+            width: 58px; height: 58px;
+            background: rgba(157,124,53,0.08);
+            border-color: #000;
+        }
+        .cursor-dot.hidden, .cursor-circle.hidden { opacity: 0; }
+
+        /* ── Button Ripple ── */
+        .ripple-btn { position: relative; overflow: hidden; }
+        .ripple-wave {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.35);
+            transform: scale(0);
+            animation: ripple-expand .65s linear forwards;
+            pointer-events: none;
+        }
+        @keyframes ripple-expand {
+            to { transform: scale(4.5); opacity: 0; }
+        }
+        /* ── Button Press ── */
+        a:active, button:active { transform: scale(0.96) !important; transition: transform .1s !important; }
+
         /* Mobile menu */
         #mobile-menu { display: none; }
         #mobile-menu.open { display: flex; }
@@ -348,6 +396,52 @@
 </footer>
 
 <script>
+    // ── Custom Cursor ──
+    const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (!isTouchDevice) {
+        const dot = Object.assign(document.createElement('div'), { className: 'cursor-dot' });
+        const ring = Object.assign(document.createElement('div'), { className: 'cursor-circle' });
+        document.body.append(dot, ring);
+
+        let mx = -100, my = -100, rx = -100, ry = -100;
+
+        document.addEventListener('mousemove', e => {
+            mx = e.clientX; my = e.clientY;
+            dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+            dot.classList.remove('hidden'); ring.classList.remove('hidden');
+        });
+        document.addEventListener('mouseleave', () => { dot.classList.add('hidden'); ring.classList.add('hidden'); });
+
+        (function follow() {
+            rx += (mx - rx) * 0.13;
+            ry += (my - ry) * 0.13;
+            ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+            requestAnimationFrame(follow);
+        })();
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+            el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+        });
+
+        document.addEventListener('mousedown', () => dot.classList.add('clicked'));
+        document.addEventListener('mouseup', () => dot.classList.remove('clicked'));
+    }
+
+    // ── Ripple on click ──
+    document.querySelectorAll('a, button').forEach(el => {
+        el.classList.add('ripple-btn');
+        el.addEventListener('click', function(e) {
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const wave = document.createElement('span');
+            wave.className = 'ripple-wave';
+            wave.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
+            this.appendChild(wave);
+            wave.addEventListener('animationend', () => wave.remove());
+        });
+    });
+
     // Mobile menu
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
