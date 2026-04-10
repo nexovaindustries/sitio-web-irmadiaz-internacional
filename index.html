@@ -38,6 +38,9 @@
             background-position: top left;
             background-attachment: fixed;
         }
+        @media (max-width: 768px) {
+            .topographic-bg { background-attachment: scroll; }
+        }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
         }
@@ -67,6 +70,44 @@
             opacity: 1;
             transform: scale(1);
         }
+
+        /* Mobile menu */
+        #mobile-menu { display: none; }
+        #mobile-menu.open { display: flex; }
+
+        @media (max-width: 768px) {
+            /* Nav */
+            nav { padding-left: 1rem !important; padding-right: 1rem !important; padding-top: 0.75rem !important; padding-bottom: 0.75rem !important; }
+            /* Logo en nav: reducir tamaño */
+            nav .text-6xl { font-size: 2.5rem !important; }
+            nav .text-3xl { font-size: 1.2rem !important; }
+            /* Hero */
+            section.relative.min-h-\[921px\] { min-height: 100svh; padding: 5rem 1rem 2rem; }
+            section.relative.min-h-\[921px\] .container { gap: 1.5rem; }
+            section.relative.min-h-\[921px\] .z-10 { padding: 1.25rem; }
+            /* Ocultar imagen hero en móvil para no cortar */
+            .reveal-scale { display: none; }
+            /* Servicios */
+            section#servicios { padding: 3rem 1rem; }
+            section#servicios .grid { gap: 1.25rem; }
+            section#servicios .bg-white\/20 { padding: 1.25rem; }
+            /* Galeria/Carta */
+            section#galeria { padding: 3rem 1rem; }
+            section#galeria .grid { gap: 1.5rem; }
+            section#galeria .bg-white\/20 { padding: 1.25rem; }
+            /* Ubicacion */
+            section#ubicacion { padding: 3rem 1rem; }
+            section#ubicacion .grid { grid-template-columns: 1fr !important; }
+            section#ubicacion .p-12 { padding: 1.5rem !important; }
+            section#ubicacion .h-96 { height: 280px !important; min-height: 280px !important; }
+            /* Footer */
+            footer .container { padding-left: 1rem; padding-right: 1rem; }
+            /* Botón hero */
+            section.relative.min-h-\[921px\] .flex.gap-4 { flex-direction: column; }
+            section.relative.min-h-\[921px\] button { width: 100%; }
+            /* Menú card de carta: texto largo no desborde */
+            .flex.justify-between.items-baseline span.text-lg { font-size: 0.9rem; }
+        }
     </style>
 </head>
 <!-- Changed font color to be strictly black -->
@@ -92,18 +133,27 @@
                     Reserva Ahora
                 </button>
 </div>
-<button class="md:hidden text-black">
-<span class="material-symbols-outlined">menu</span>
+<button id="menu-toggle" class="md:hidden text-black" aria-label="Abrir menú">
+    <span class="material-symbols-outlined">menu</span>
 </button>
 </nav>
+<!-- Mobile dropdown -->
+<div id="mobile-menu" class="flex-col bg-white/95 backdrop-blur-xl border-t border-black/10 md:hidden">
+    <a href="#servicios" onclick="closeMobileMenu()" class="px-6 py-4 font-['Noto_Serif'] text-sm tracking-[0.05em] uppercase text-black hover:bg-black/5 transition-colors border-b border-black/10 block">Servicios</a>
+    <a href="#galeria" onclick="closeMobileMenu()" class="px-6 py-4 font-['Noto_Serif'] text-sm tracking-[0.05em] uppercase text-black hover:bg-black/5 transition-colors border-b border-black/10 block">Galería</a>
+    <a href="#ubicacion" onclick="closeMobileMenu()" class="px-6 py-4 font-['Noto_Serif'] text-sm tracking-[0.05em] uppercase text-black hover:bg-black/5 transition-colors border-b border-black/10 block">Ubicación</a>
+    <div class="px-6 py-4">
+        <a href="https://wa.me/51958180621" target="_blank" class="block text-center border border-black bg-black text-white px-6 py-2 font-['Noto_Serif'] text-sm tracking-[0.05em] uppercase">Reserva Ahora</a>
+    </div>
+</div>
 </header>
 <main>
 <!-- Hero Section -->
-<section class="relative min-h-[921px] flex items-center px-8 py-20 overflow-hidden">
-<div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+<section class="relative min-h-screen flex items-center px-4 md:px-8 py-20 overflow-hidden">
+<div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
 <!-- Made background transparent -->
-<div class="z-10 reveal bg-white/20 backdrop-blur-md p-8 rounded border border-black/10">
-<h1 class="editorial-title font-headline text-5xl md:text-7xl font-bold mb-8 text-black">
+<div class="z-10 reveal bg-white/20 backdrop-blur-md p-6 md:p-8 rounded border border-black/10">
+<h1 class="editorial-title font-headline text-4xl md:text-7xl font-bold mb-6 md:mb-8 text-black">
                         Resalta el arte de <br/>
 <span class="italic font-light">Mi pasión, tu belleza</span>
 </h1>
@@ -116,7 +166,7 @@
                         </button>
 </div>
 </div>
-<div class="relative reveal-scale">
+<div class="relative reveal-scale hidden md:block">
 <div class="aspect-[4/5] relative z-10 overflow-hidden shadow-2xl bg-white p-2">
 <img alt="Entrada Spa de Lujo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiWwESoq6aPx9cHQSegnmIspk6Iyhw7iASknv67VcNc1cZNW3MIsWEtH91WDrSaGDz4N6NEnSmlx9To-TiODGQu6zG_ox03ZHhNqKYWryAGDkEHM_z-_8bfweW3nA-GB3PA-2u9sESRbsBtOlK7DJ0sS2HuiaON5imRKWrDusFQcklEgxfJrktQVgNqqjb4cBwDr7ckTPEjZ4csZUueEyKj7hUi9PZK6VWYsb5kXhArOP_YZAsqjkjaQ1IesvMPP8168JiCBlhRi0a"/>
 </div>
@@ -125,7 +175,7 @@
 </section>
 
 <!-- Promociones / Featured Services Grid -->
-<section class="py-24 px-8" id="servicios">
+<section class="py-16 md:py-24 px-4 md:px-8" id="servicios">
 <div class="container mx-auto">
 <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4 reveal">
 <div class="max-w-2xl bg-white/30 backdrop-blur-[4px] p-6 rounded border border-black/10">
@@ -178,7 +228,7 @@
 </section>
 
 <!-- Service Menu -->
-<section class="py-24 px-8" id="galeria">
+<section class="py-16 md:py-24 px-4 md:px-8" id="galeria">
 <div class="container mx-auto">
 <div class="grid md:grid-cols-2 gap-20">
 <div class="reveal bg-white/20 backdrop-blur-md p-8 rounded border border-black/10">
@@ -233,10 +283,10 @@
 </section>
 
 <!-- Location Section -->
-<section class="py-24 px-8" id="ubicacion">
+<section class="py-16 md:py-24 px-4 md:px-8" id="ubicacion">
 <div class="container mx-auto reveal">
 <div class="grid md:grid-cols-2 gap-0 shadow-2xl overflow-hidden bg-white/20 backdrop-blur-md border border-black/10">
-<div class="p-12 md:p-20 flex flex-col justify-center">
+<div class="p-6 md:p-20 flex flex-col justify-center">
 <h2 class="font-headline text-4xl font-bold mb-8 text-black">Visítanos en <span class="bg-black text-white px-2 rounded">Yanahuara</span></h2>
 <div class="space-y-8 mb-12">
 <div class="flex gap-6 items-start">
@@ -259,7 +309,7 @@
                             Ruta en Google Maps
                         </a>
 </div>
-<div class="h-96 md:h-auto min-h-[450px] relative border-l border-black/10">
+<div class="h-72 md:h-auto md:min-h-[450px] relative border-t md:border-t-0 md:border-l border-black/10">
 <iframe class="w-full h-full grayscale hover:grayscale-0 transition-all duration-700" src="https://maps.google.com/maps?q=Calle%20Antiquilla%20355,%20Yanahuara,%20Arequipa&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 </div>
 </div>
@@ -303,6 +353,12 @@
 </footer>
 
 <script>
+    // Mobile menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+
     document.addEventListener("DOMContentLoaded", () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
