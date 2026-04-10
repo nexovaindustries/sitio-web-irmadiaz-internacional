@@ -71,53 +71,44 @@
             transform: scale(1);
         }
 
-        /* ── Custom Cursor ── */
-        * { cursor: none !important; }
-        @media (hover: none) and (pointer: coarse) { * { cursor: auto !important; } }
-        .cursor-dot {
+        /* ── Custom Cursor: Sparkle Trail ── */
+        @media (hover: hover) and (pointer: fine) { * { cursor: none !important; } }
+        .cursor-main {
             position: fixed;
-            width: 8px; height: 8px;
-            background: #000;
-            border-radius: 50%;
+            width: 18px; height: 18px;
             pointer-events: none;
             z-index: 999999;
             transform: translate(-50%, -50%);
-            transition: width .2s, height .2s, background .2s;
+            transition: transform .1s, opacity .2s;
         }
-        .cursor-dot.clicked { width: 14px; height: 14px; background: #9d7c35; }
-        .cursor-circle {
+        .cursor-main svg { width: 100%; height: 100%; }
+        .cursor-main.on-btn { transform: translate(-50%,-50%) scale(1.5); }
+        .cursor-main.hidden { opacity: 0; }
+        .sparkle {
             position: fixed;
-            width: 38px; height: 38px;
-            border: 1.5px solid #9d7c35;
-            border-radius: 50%;
             pointer-events: none;
-            z-index: 999998;
-            transform: translate(-50%, -50%);
-            transition: width .3s ease, height .3s ease, border-color .3s, opacity .3s, background .3s;
-            opacity: 0.8;
+            z-index: 999997;
+            border-radius: 50%;
+            transform: translate(-50%,-50%) scale(1);
+            animation: sparkle-out .7s ease-out forwards;
         }
-        .cursor-circle.hover {
-            width: 58px; height: 58px;
-            background: rgba(157,124,53,0.08);
-            border-color: #000;
+        @keyframes sparkle-out {
+            0%   { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, calc(-50% - 22px)) scale(0); }
         }
-        .cursor-dot.hidden, .cursor-circle.hidden { opacity: 0; }
 
-        /* ── Button Ripple ── */
+        /* ── Button Motion ── */
         .ripple-btn { position: relative; overflow: hidden; }
         .ripple-wave {
             position: absolute;
             border-radius: 50%;
-            background: rgba(255,255,255,0.35);
+            background: rgba(157,124,53,0.25);
             transform: scale(0);
-            animation: ripple-expand .65s linear forwards;
+            animation: ripple-expand .7s ease-out forwards;
             pointer-events: none;
         }
-        @keyframes ripple-expand {
-            to { transform: scale(4.5); opacity: 0; }
-        }
-        /* ── Button Press ── */
-        a:active, button:active { transform: scale(0.96) !important; transition: transform .1s !important; }
+        @keyframes ripple-expand { to { transform: scale(5); opacity: 0; } }
+        a:active, button:active { transform: scale(0.95) !important; transition: transform .1s ease !important; }
 
         /* Mobile menu */
         #mobile-menu { display: none; }
@@ -360,13 +351,6 @@
 </section>
 </main>
 
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/51958180621" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-[9999] bg-[#25d366] text-white w-[60px] h-[60px] rounded-full flex items-center justify-center shadow-[0_4px_14px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform duration-300" aria-label="Contáctanos por WhatsApp">
-    <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
-        <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.115.55 4.183 1.597 6L0 24l6.155-1.583C7.94 23.447 9.948 24 12.031 24 18.677 24 24 18.614 24 11.968c0-6.645-5.385-12.03-12.031-12.03h.062zm6.208 17.65c-.279.791-1.611 1.488-2.222 1.554-.509.055-1.15.174-3.238-.686-2.518-1.036-4.14-3.627-4.262-3.793-.122-.167-1.02-1.36-1.02-2.61 0-1.25.642-1.859.878-2.1.205-.205.518-.283.79-.283.086 0 .167 0 .237.01.218 0 .432.091.564.442.179.474.605 1.493.659 1.602.055.111.092.242.019.387-.074.146-.111.237-.222.348-.111.111-.233.254-.334.334-.112.091-.237.193-.105.422.13.228.583.96.248 1.556.666-.027-.384 1.206-.605.626 1.402.13.218.254.218.348.019.467-.687.751-1.01.992-1.01s.443.086.605.474c.163.388.948 2.27 1.093 2.454.146.183.21.312.019.687z" />
-    </svg>
-</a>
-
 <!-- Footer -->
 <footer class="w-full py-12 bg-white/40 backdrop-blur-md">
 <div class="container mx-auto px-12 border-t border-black/20 pt-12">
@@ -396,36 +380,46 @@
 </footer>
 
 <script>
-    // ── Custom Cursor ──
-    const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-    if (!isTouchDevice) {
-        const dot = Object.assign(document.createElement('div'), { className: 'cursor-dot' });
-        const ring = Object.assign(document.createElement('div'), { className: 'cursor-circle' });
-        document.body.append(dot, ring);
+    // ── Sparkle Cursor ──
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (!isTouch) {
+        const cur = document.createElement('div');
+        cur.className = 'cursor-main';
+        cur.innerHTML = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z" fill="#9d7c35" stroke="#000" stroke-width="0.5"/>
+        </svg>`;
+        document.body.appendChild(cur);
 
-        let mx = -100, my = -100, rx = -100, ry = -100;
+        let mx = -200, my = -200, lastX = -200, lastY = -200;
+        let sparkleTimer = 0;
 
         document.addEventListener('mousemove', e => {
             mx = e.clientX; my = e.clientY;
-            dot.style.left = mx + 'px'; dot.style.top = my + 'px';
-            dot.classList.remove('hidden'); ring.classList.remove('hidden');
-        });
-        document.addEventListener('mouseleave', () => { dot.classList.add('hidden'); ring.classList.add('hidden'); });
+            cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+            cur.classList.remove('hidden');
 
-        (function follow() {
-            rx += (mx - rx) * 0.13;
-            ry += (my - ry) * 0.13;
-            ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-            requestAnimationFrame(follow);
-        })();
+            // Spawn sparkle every ~60px of movement
+            const dx = mx - lastX, dy = my - lastY;
+            sparkleTimer += Math.sqrt(dx*dx + dy*dy);
+            if (sparkleTimer > 55) {
+                sparkleTimer = 0;
+                lastX = mx; lastY = my;
+                const colors = ['#9d7c35','#fef0a5','#df9b38','#000'];
+                const sizes = [5,7,4,6];
+                const s = document.createElement('div');
+                s.className = 'sparkle';
+                const sz = sizes[Math.floor(Math.random()*sizes.length)];
+                s.style.cssText = `left:${mx + (Math.random()-0.5)*18}px;top:${my + (Math.random()-0.5)*18}px;width:${sz}px;height:${sz}px;background:${colors[Math.floor(Math.random()*colors.length)]};`;
+                document.body.appendChild(s);
+                s.addEventListener('animationend', () => s.remove());
+            }
+        });
+        document.addEventListener('mouseleave', () => cur.classList.add('hidden'));
 
         document.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-            el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+            el.addEventListener('mouseenter', () => cur.classList.add('on-btn'));
+            el.addEventListener('mouseleave', () => cur.classList.remove('on-btn'));
         });
-
-        document.addEventListener('mousedown', () => dot.classList.add('clicked'));
-        document.addEventListener('mouseup', () => dot.classList.remove('clicked'));
     }
 
     // ── Ripple on click ──
